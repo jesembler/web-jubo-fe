@@ -8,6 +8,7 @@ export function RootLayout() {
         <Link to="/">Home</Link>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/posts">Posts</Link>
+        <Link to="/test/supabase">supabase-test</Link>
       </nav>
       <main>
         <Outlet />
