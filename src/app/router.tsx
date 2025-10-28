@@ -5,6 +5,7 @@ import {
   createRoute,
   createRouter,
 } from '@tanstack/react-router';
+import { Provider } from 'urql';
 
 import { RootLayout } from './layout/RootLayout';
 
@@ -14,6 +15,7 @@ import Dashboard from '../pages/Dashboard';
 import PostsIndex from '../pages/posts/Index';
 import PostDetail from '../pages/posts/PostDetail';
 import SupabaseTestPage from '../pages/supabase/page';
+import { graphqlClient } from '../shared/graphqlClient';
 
 // 루트 라우트
 const rootRoute = createRootRoute({
@@ -63,5 +65,9 @@ const routeTree = rootRoute.addChildren([
 const router = createRouter({ routeTree });
 
 export function AppRouter() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider value={graphqlClient}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
